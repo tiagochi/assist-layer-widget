@@ -1,0 +1,50 @@
+/* Main Layout */
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.left-panel {
+  flex: 0 0 25%;
+  max-width: 420px;
+  min-width: 320px;
+}
+.left-panel layer-conversation-list {
+  flex-grow: 1;
+}
+.right-panel {
+  border-left: 1px solid rgba(0,0,0,0.3);
+  flex: 3;
+}
+
+@media (max-width: 600px) {
+  .left-panel {
+    flex: 1;
+    max-width:none;
+  }
+
+  .right-panel {
+    flex: 1;
+    max-width:none;
+  }
+
+  .messenger.has-conversation .left-panel {
+    display: none;
+  }
+
+  .messenger:not(.has-conversation) .right-panel {
+    display: none;
+  }
+}
+
+layer-conversation-list {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+layer-conversation-view {
+  height: 100px;  /* Flexbox workaround */
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
