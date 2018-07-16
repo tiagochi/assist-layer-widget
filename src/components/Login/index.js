@@ -2,7 +2,6 @@
 import React from 'react'
 import layer from '../../get-layer';
 // @flow-disable
-import config from '../../LayerConfiguration.json'
 // @flow-enable
 import './login_style.css'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'

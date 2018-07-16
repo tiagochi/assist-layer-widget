@@ -2,7 +2,6 @@
 import * as React from 'react';
 import ReactDom from 'react-dom';
 
-import layerConfig from './LayerConfiguration.json';
 
 import Layer from '@layerhq/web-xdk';
 import '@layerhq/web-xdk/ui/adapters/react';
