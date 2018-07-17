@@ -60,7 +60,9 @@ class Login extends React.Component<Props, State> {
         this.setState({
           nonce: e.nonce,
           cb: e.callback
-        })
+        });
+        //TODO: GET USERID from localStorage or create a new random one and call the identity provider
+        //this.getIdentityToken();
       }, this)
 
       const previousPathname = this.props.location.previousLocation ? this.props.location.previousLocation.pathname : null

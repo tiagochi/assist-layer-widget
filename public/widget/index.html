@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <style>
+    html {
+      width: 100%;
+      height: 100%;
+      background: url(https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg) center center no-repeat;
+      background-size: 300px;
+    }
+  </style>
+
+</head>
+<!-- <script id="assist-layer-widget-js" async="" src="http://platform.assi.st/assets/js/assist-layer-widget.js"></script> -->
+<script id="assist-layer-widget-js" src="assist-layer-widget.js"></script>
+
+<body>
+  <div id="assist-layer-widget">
+  </div>
+</body>
+
+<script>
+    var assistLayerWidget = new AssistLayerWidget();
+
+    //Tiago Test
+    assistLayerWidget.init({
+      app_id: 'layer:///apps/staging/df93255c-8398-11e8-90f7-b381be194f6f',
+      identity_provider_url: 'https://test-tiago.herokuapp.com',
+      botUserId: '8d8c54e7-4266-4ac5-b541-87182dd8b823'
+    });
+
+    //Nicolas test
+    // assistLayerWidget.init({
+    //   app_id: 'layer:///apps/staging/96a486de-838d-11e8-ae0e-8308faf2e277',
+    //   identity_provider_url: 'https://assist-user-test.herokuapp.com/',
+    //   botUserId: '8d8c54e7-4266-4ac5-b541-87182dd8b823'
+    // });
+  </script>
+</html>

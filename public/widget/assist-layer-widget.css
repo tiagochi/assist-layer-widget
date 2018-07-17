@@ -1,0 +1,36 @@
+.layer-widget {
+    width: 400px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    height: 75%;
+    box-shadow: 0px 0px 10px #ccc !important;
+    border: 0px;
+    border-radius: 15px;
+    display: none;
+  }
+
+  @media (max-width: 575.98px) {
+    .layer-widget {
+        width: 100%;
+        height: 100%;
+        right: 0px;
+        bottom: 0px;
+        border-radius: 0px;
+    }
+  }
+  
+
+  .layer-widget-button{
+    cursor: pointer;
+    background: url(https://pbs.twimg.com/profile_images/689953967711875074/VFrfCWtM.png) center center;
+    background-size: cover;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    height: 60pt;
+    width: 60pt;
+    box-shadow: 0px 0px 10px #ccc !important;
+    border: 0px;
+    border-radius: 50%;
+  }
