@@ -22,7 +22,7 @@ function AssistLayerWidget() {
     }
 
     //addCss('assist-layer-widget','http://platform.assi.st/assets/css/assist-layer-widget.css');
-    addCss('assist-layer-widget-css', 'assist-layer-widget.css');
+    addCss('assist-layer-widget-css', 'https://assist-layer-widget.herokuapp.com/widget/assist-layer-widget.css');
     addCss('animated', 'https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css');
 
 
