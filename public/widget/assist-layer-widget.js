@@ -12,13 +12,22 @@ function AssistLayerWidget() {
         }
     }
     this.init = function (data) { //{app_id,identity_provider_url,botUserId}
-        var assistLayerWidgetDiv = document.getElementById('assist-layer-widget');
-        assistLayerWidgetDiv.innerHTML = `
-        <div id="layer-widget-button" class="layer-widget-button" onclick="document.getElementById('layer-widget-button').style.display='none';document.getElementById('layer-widget').style.display='block';">
-        </div>
-        <iframe id="layer-widget" class="layer-widget slideInUp animated" src="https://assist-layer-widget.herokuapp.com/conversations/?app_id=`+ data.app_id + `&identity_provider_url=` + data.identity_provider_url + `&botUserId=` + data.botUserId + `">
-        </iframe>
-        `
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function (e) {
+            var xhr = e.target;
+            results.innerHTML = xhr.response.message;
+            var assistLayerWidgetDiv = document.getElementById('assist-layer-widget');
+            assistLayerWidgetDiv.innerHTML = `
+            <div id="layer-widget-button" class="layer-widget-button" onclick="document.getElementById('layer-widget-button').style.display='none';document.getElementById('layer-widget').style.display='block';">
+            </div>
+            <iframe id="layer-widget" class="layer-widget slideInUp animated" src="https://assist-layer-widget.herokuapp.com/conversations/?app_id=`+ xhr.response.app_id + `&identity_provider_url=` + data.identity_provider_url + `&chatBotId=` + data.chatBotId + `&environmentType=` + data.environmentType + `&botUserId=` + xhr.response.chatbotUserId + `">
+            </iframe>
+            `
+        };
+        oReq.open('GET', data.identity_provider_url+'/config?environmentType='+data.environmentType+'&chatBotCode='+data.chatBotCode, true);
+        oReq.responseType = 'json';
+        oReq.send();
+
     }
 
     //addCss('assist-layer-widget','http://platform.assi.st/assets/css/assist-layer-widget.css');

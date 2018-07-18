@@ -36,7 +36,7 @@ class Login extends React.Component<Props, State> {
       layer.queryDict = {};
       window.location.search.substr(1).split("&").forEach(function (item) { layer.queryDict[item.split("=")[0]] = item.split("=")[1] })
     }
-    
+
     console.log(layer.queryDict);
     this.state = {
       appId: layer.queryDict.app_id,
@@ -46,7 +46,9 @@ class Login extends React.Component<Props, State> {
       password: null,
       nonce: null,
       waiting: false,
-      isTrusted: false
+      isTrusted: false,
+      chatBotCode: layer.queryDict.chatBotCode,
+      environmentType: layer.queryDict.environmentType
     }
   }
 
@@ -62,7 +64,16 @@ class Login extends React.Component<Props, State> {
           cb: e.callback
         });
         //TODO: GET USERID from localStorage or create a new random one and call the identity provider
-        //this.getIdentityToken();
+        var userId = localStorage.getItem('layer-userId');
+        if (!userId) {
+          userId = this.generateUUID();
+        }
+        localStorage.setItem('layer-userId', userId);
+
+        this.setState({
+          userId: userId
+        });
+        this.getIdentityToken();
       }, this)
 
       const previousPathname = this.props.location.previousLocation ? this.props.location.previousLocation.pathname : null
@@ -70,21 +81,25 @@ class Login extends React.Component<Props, State> {
         if (previousPathname)
           this.props.history.push({
             pathname: previousPathname,
-            search: this.props.location.search})
+            search: this.props.location.search
+          })
         else
           this.props.history.push({
             pathname: '/conversations',
-            search: this.props.location.search})
+            search: this.props.location.search
+          })
       }, this);
       if (layerClient.isReady) {
         if (previousPathname)
           this.props.history.push({
             pathname: previousPathname,
-            search: this.props.location.search})
+            search: this.props.location.search
+          })
         else
           this.props.history.push({
             pathname: '/conversations',
-            search: this.props.location.search})
+            search: this.props.location.search
+          })
       }
 
 
@@ -96,10 +111,25 @@ class Login extends React.Component<Props, State> {
     layerClient.off(null, null, this);
   }
 
+  generateUUID() { // Public Domain/MIT
+    var d = new Date().getTime();
+    if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+      d += performance.now(); //use high-precision timer if available
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+
   getIdentityToken() {
     const {
       email,
       password,
+      userId,
+      chatBotCode,
+      environmentType,
       nonce,
       waiting,
     } = this.state
@@ -107,16 +137,14 @@ class Login extends React.Component<Props, State> {
     if (waiting) return;
     this.setState({ waiting: true });
     Layer.Utils.xhr({
-      url: this.state.identityProviderUrl,
+      url: this.state.identityProviderUrl+'?chatBotCode='+chatBotCode+'&nonce='+nonce+'&userId='+userId+'&environmentType='+environmentType,
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
       },
       method: 'POST',
       data: {
-        nonce: nonce,
-        email: email,
-        password: password
+        
       }
     }, (res) => {
       this.setState({ waiting: false });
@@ -140,28 +168,33 @@ class Login extends React.Component<Props, State> {
   }
 
   render() {
-    return (<div id="identity">
-      <form>
-        <img alt="layer" src="http://static.layer.com/logo-only-blue.png" />
-        <h1>Layer sample app</h1>
-        <div className="login-group">
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email" onKeyDown={this.handleKeyDown} onChange={e => this.setState({ email: e.target.value })} />
-        </div>
-        <div className="login-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" onKeyDown={this.handleKeyDown} onChange={e => this.setState({ password: e.target.value })} />
-        </div>
-        <div className="login-group is-trusted">
-          <input type="checkbox" id="trusted" onChange={e => this.setTrustedState(e.target.checked)} checked={layerClient.isTrustedDevice} />
-          <label htmlFor="trusted">Is Trusted Device</label>
-        </div>
-        <button type="button" value="Submit" onClick={() => this.getIdentityToken()}>
-          {this.state.waiting ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
-          <span>Login</span>
-        </button>
-      </form>
-    </div>)
+    return (
+      <div class="center">
+      <FontAwesomeIcon icon={faSpinner} spin />
+      </div>
+    // <div id="identity">
+    //   <form>
+    //     <img alt="layer" src="http://static.layer.com/logo-only-blue.png" />
+    //     <h1>Layer sample app</h1>
+    //     <div className="login-group">
+    //       <label htmlFor="email">Email</label>
+    //       <input type="text" id="email" onKeyDown={this.handleKeyDown} onChange={e => this.setState({ email: e.target.value })} />
+    //     </div>
+    //     <div className="login-group">
+    //       <label htmlFor="password">Password</label>
+    //       <input type="password" id="password" onKeyDown={this.handleKeyDown} onChange={e => this.setState({ password: e.target.value })} />
+    //     </div>
+    //     <div className="login-group is-trusted">
+    //       <input type="checkbox" id="trusted" onChange={e => this.setTrustedState(e.target.checked)} checked={layerClient.isTrustedDevice} />
+    //       <label htmlFor="trusted">Is Trusted Device</label>
+    //     </div>
+    //     <button type="button" value="Submit" onClick={() => this.getIdentityToken()}>
+    //       {this.state.waiting ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
+    //       <span>Login</span>
+    //     </button>
+    //   </form>
+    // </div>
+    )
   }
 }
 

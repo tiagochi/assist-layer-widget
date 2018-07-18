@@ -1,39 +1,34 @@
 <html>
-
 <head>
   <style>
     html {
       width: 100%;
       height: 100%;
       background: url(https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg) center center no-repeat;
-      background-size: 300px;
+      background-size: 400px;
     }
   </style>
-
 </head>
-<!-- <script id="assist-layer-widget-js" async="" src="http://platform.assi.st/assets/js/assist-layer-widget.js"></script> -->
+
+<!-- Add this after </head> -->
 <script id="assist-layer-widget-js" src="https://assist-layer-widget.herokuapp.com/widget/assist-layer-widget.js"></script>
+<!-- END - Add this after </head> -->
 
 <body>
-  <div id="assist-layer-widget">
-  </div>
+  <!-- Add this inside <body> -->
+  <div id="assist-layer-widget"></div>
+  <!-- END - Add this inside <body> -->
 </body>
 
+<!-- Add this at the end of the HTML after </body> -->
 <script>
     var assistLayerWidget = new AssistLayerWidget();
-
-    //Tiago Test
-    assistLayerWidget.init({
-      app_id: 'layer:///apps/staging/df93255c-8398-11e8-90f7-b381be194f6f',
-      identity_provider_url: 'https://test-tiago.herokuapp.com',
-      botUserId: '8d8c54e7-4266-4ac5-b541-87182dd8b823'
+    assistLayerWidget.init({      
+      identity_provider_url: 'https://platform-dev.assi.st/platform-core/api/public/v1/layer', 
+      chatBotCode: 'NICOLASTESTBRAND-LAYER-1',
+      environmentType:'DRAFT'
     });
+</script>
+<!-- END - Add this at the end of the HTML after </body> -->
 
-    //Nicolas test
-    // assistLayerWidget.init({
-    //   app_id: 'layer:///apps/staging/96a486de-838d-11e8-ae0e-8308faf2e277',
-    //   identity_provider_url: 'https://assist-user-test.herokuapp.com/',
-    //   botUserId: '8d8c54e7-4266-4ac5-b541-87182dd8b823'
-    // });
-  </script>
 </html>
