@@ -148,8 +148,8 @@ class Login extends React.Component<Props, State> {
       }
     }, (res) => {
       this.setState({ waiting: false });
-      if (res.success && res.data.identity_token && this.state.cb) {
-        this.state.cb(res.data.identity_token)
+      if (res.success && res.data.identityToken && this.state.cb) {
+        this.state.cb(res.data.identityToken)
       } else {
         alert('Login failed; please check your user id and password');
       }
