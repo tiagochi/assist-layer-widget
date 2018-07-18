@@ -15,7 +15,6 @@ function AssistLayerWidget() {
         var oReq = new XMLHttpRequest();
         oReq.onload = function (e) {
             var xhr = e.target;
-            results.innerHTML = xhr.response.message;
             var assistLayerWidgetDiv = document.getElementById('assist-layer-widget');
             assistLayerWidgetDiv.innerHTML = `
             <div id="layer-widget-button" class="layer-widget-button" onclick="document.getElementById('layer-widget-button').style.display='none';document.getElementById('layer-widget').style.display='block';">
