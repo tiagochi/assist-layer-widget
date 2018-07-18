@@ -19,7 +19,7 @@ function AssistLayerWidget() {
             assistLayerWidgetDiv.innerHTML = `
             <div id="layer-widget-button" class="layer-widget-button" onclick="document.getElementById('layer-widget-button').style.display='none';document.getElementById('layer-widget').style.display='block';">
             </div>
-            <iframe id="layer-widget" class="layer-widget slideInUp animated" src="https://assist-layer-widget.herokuapp.com/conversations/?app_id=`+ xhr.response.app_id + `&identity_provider_url=` + data.identity_provider_url + `&chatBotId=` + data.chatBotId + `&environmentType=` + data.environmentType + `&botUserId=` + xhr.response.chatbotUserId + `">
+            <iframe id="layer-widget" class="layer-widget slideInUp animated" src="https://assist-layer-widget.herokuapp.com/conversations/?app_id=`+ xhr.response.appId + `&identity_provider_url=` + data.identity_provider_url + `&chatBotId=` + data.chatBotId + `&environmentType=` + data.environmentType + `&botUserId=` + xhr.response.chatBotUserId + `">
             </iframe>
             `
         };
