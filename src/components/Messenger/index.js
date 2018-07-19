@@ -130,8 +130,11 @@ class Messenger extends Component<Props, State> {
 
     var conversation;
     
+    
+    console.log('conversationId:'+layerClient.queryDict.conversationId);
     if (layerClient.queryDict.conversationId){
-      conversation = layerClient.getConversation(layerClient.queryDict.conversationId);
+      conversation = layerClient.getConversation(layerClient.queryDict.conversationId,true);
+      console.log(conversation);
     } else {
       conversation = layerClient.createConversation({
         participants: ['layer:///identities/' + layerClient.userId, 'layer:///identities/' + layerClient.queryDict.botUserId],
