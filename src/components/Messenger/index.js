@@ -133,47 +133,31 @@ class Messenger extends Component<Props, State> {
     
     console.log('conversationId:'+layerClient.queryDict.conversationId);
     if (layerClient.queryDict.conversationId){
-      conversation = layerClient.getConversation(layerClient.queryDict.conversationId,true);
-      console.log(conversation);
+      this.props.history.push({
+        pathname: `/conversations/${layerClient.queryDict.conversationId}`,
+        search: this.props.location.search
+      });
     } else {
       conversation = layerClient.createConversation({
         participants: ['layer:///identities/' + layerClient.userId, 'layer:///identities/' + layerClient.queryDict.botUserId],
         distinct: true
       });
+      conversation.on('conversations:sent', ()=> {
+        this.state.conversation = conversation;
+        console.log(uuid(this.state.conversation.id));
+        this.props.history.push({
+          pathname: `/conversations/${uuid(this.state.conversation.id)}`,
+          search: this.props.location.search
+        });
+  
+      });;
+      const StatusModel = Layer.Core.Client.getMessageTypeModelClass('StatusModel');
+      const model = new StatusModel({
+        text: 'Started conversation.'
+      });
+      model.send({ conversation });
     }
     
-
-    conversation.on('conversations:sent', ()=> {
-      this.state.conversation = conversation;
-      console.log(uuid(this.state.conversation.id));
-      this.props.history.push({
-        pathname: `/conversations/${uuid(this.state.conversation.id)}`,
-        search: this.props.location.search
-      });
-
-    });;
-
-
-    const StatusModel = Layer.Core.Client.getMessageTypeModelClass('StatusModel');
-    const model = new StatusModel({
-      text: 'Started conversation.'
-    });
-    model.send({ conversation });
-
-
-    // console.log(layerClient);
-
-    // Object.keys(layerClient._models.conversations).forEach((conversationKey)=>{
-    //   conversation = layerClient._models.conversations[conversationKey];
-    //   conversation.__participants.forEach((participant)=>{
-    //     if(uuid(participant.id)=== layerClient.queryDict.botUserId) {
-    //       this.props.history.push({
-    //         pathname: `/conversations/${uuid(conversation.id)}`,
-    //         search: this.props.location.search
-    //       });
-    //     }
-    //   });
-    // });
   }
 
   // Handle reauthentication
