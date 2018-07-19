@@ -515,7 +515,7 @@ class Messenger extends Component<Props, State> {
           <div className="title">{this.getTitle()}</div>
           
           {<a href="#" onClick={this.closeWidget()}>
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} />-
           </a> }
           
           {/* <a href="#" onClick={this.startEditConversation}>
