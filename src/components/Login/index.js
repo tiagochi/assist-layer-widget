@@ -144,7 +144,7 @@ class Login extends React.Component<Props, State> {
       },
       method: 'POST',
       data: {
-        
+        avatar_url:'https://platform.assi.st/assets/img/default-avatar.png'
       }
     }, (res) => {
       this.setState({ waiting: false });
