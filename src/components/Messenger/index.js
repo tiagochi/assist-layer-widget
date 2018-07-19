@@ -514,7 +514,7 @@ class Messenger extends Component<Props, State> {
           </a> */}
           <div className="title">{this.getTitle()}</div>
           
-          {<a href="#" onClick='assistLayerWidget.closeWidget();'>
+          {<a href="#" onClick={this.closeWidget()}>
             <FontAwesomeIcon icon={faTimes} />
           </a> }
           
@@ -533,6 +533,10 @@ class Messenger extends Component<Props, State> {
         />
       </div>
     );
+  }
+
+  closeWidget(){
+    window.parent.assistLayerWidget.closeWidget();
   }
 
   render() {
