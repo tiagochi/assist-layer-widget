@@ -9,6 +9,7 @@
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
+import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 import faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 
