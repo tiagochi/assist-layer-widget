@@ -81,24 +81,24 @@ class Login extends React.Component<Props, State> {
         if (previousPathname)
           this.props.history.push({
             pathname: previousPathname,
-            search: this.props.location.search+'&conversationId='+conversationId
+            search: this.props.location.search+'&conversationId='+this.state.conversationId
           })
         else
           this.props.history.push({
             pathname: '/conversations',
-            search: this.props.location.search+'&conversationId='+conversationId
+            search: this.props.location.search+'&conversationId='+this.state.conversationId
           })
       }, this);
       if (layerClient.isReady) {
         if (previousPathname)
           this.props.history.push({
             pathname: previousPathname,
-            search: this.props.location.search+'&conversationId='+conversationId
+            search: this.props.location.search+'&conversationId='+this.state.conversationId
           })
         else
           this.props.history.push({
             pathname: '/conversations',
-            search: this.props.location.search+'&conversationId='+conversationId
+            search: this.props.location.search+'&conversationId='+this.state.conversationId
           })
       }
 
