@@ -81,24 +81,24 @@ class Login extends React.Component<Props, State> {
         if (previousPathname)
           this.props.history.push({
             pathname: previousPathname,
-            search: this.props.location.search
+            search: this.props.location.search+'&conversationId='+conversationId
           })
         else
           this.props.history.push({
             pathname: '/conversations',
-            search: this.props.location.search
+            search: this.props.location.search+'&conversationId='+conversationId
           })
       }, this);
       if (layerClient.isReady) {
         if (previousPathname)
           this.props.history.push({
             pathname: previousPathname,
-            search: this.props.location.search
+            search: this.props.location.search+'&conversationId='+conversationId
           })
         else
           this.props.history.push({
             pathname: '/conversations',
-            search: this.props.location.search
+            search: this.props.location.search+'&conversationId='+conversationId
           })
       }
 
@@ -149,6 +149,7 @@ class Login extends React.Component<Props, State> {
     }, (res) => {
       this.setState({ waiting: false });
       if (res.success && res.data.identityToken && this.state.cb) {
+        this.setState({conversationId:res.data.conversationId});
         this.state.cb(res.data.identityToken)
       } else {
         alert('Login failed; please check your user id and password');
@@ -169,7 +170,7 @@ class Login extends React.Component<Props, State> {
 
   render() {
     return (
-      <div class="center">
+      <div className="center">
       <FontAwesomeIcon icon={faSpinner} spin />
       </div>
     // <div id="identity">

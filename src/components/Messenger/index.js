@@ -128,18 +128,20 @@ class Messenger extends Component<Props, State> {
       window.location.search.substr(1).split("&").forEach(function (item) { layerClient.queryDict[item.split("=")[0]] = item.split("=")[1] })
     }
 
-    var conversation = layerClient.createConversation({
-      participants: ['layer:///identities/' + layerClient.userId, 'layer:///identities/' + layerClient.queryDict.botUserId],
-      distinct: true
-    });
+    var conversation;
     
+    if (layerClient.queryDict.conversationId){
+      conversation = layerClient.getConversation(layerClient.queryDict.conversationId);
+    } else {
+      conversation = layerClient.createConversation({
+        participants: ['layer:///identities/' + layerClient.userId, 'layer:///identities/' + layerClient.queryDict.botUserId],
+        distinct: true
+      });
+    }
+    
+
     conversation.on('conversations:sent', ()=> {
-      
       this.state.conversation = conversation;
-
-
-
-
       console.log(uuid(this.state.conversation.id));
       this.props.history.push({
         pathname: `/conversations/${uuid(this.state.conversation.id)}`,
