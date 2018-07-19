@@ -512,6 +512,11 @@ class Messenger extends Component<Props, State> {
           <FontAwesomeIcon icon={faArrowLeft} />
           </a> */}
           <div className="title">{this.getTitle()}</div>
+          
+          {<a href="#" onClick='assistLayerWidget.closeWidget();'>
+            <FontAwesomeIcon icon={faClose} />
+          </a> }
+          
           {/* <a href="#" onClick={this.startEditConversation}>
             <FontAwesomeIcon icon={faEdit} />
           </a> */}
