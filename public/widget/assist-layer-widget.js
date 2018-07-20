@@ -34,7 +34,7 @@ function AssistLayerWidget() {
     this.openWidget = function (appId,identity_provider_url,chatBotCode,environmentType,chatBotUserId) {
         this.closeWidget();
         
-        document.getElementById('layer-widget-button').style.display='none';
+        document.getElementById('layer-widget-button-wrapper').style.display='none';
         
         var assistLayerWidgetDiv = document.getElementById('assist-layer-widget');
         assistLayerWidgetDiv.innerHTML += `
@@ -45,7 +45,7 @@ function AssistLayerWidget() {
 
     
     this.closeWidget = function () {
-        document.getElementById('layer-widget-button').style.display='block';
+        document.getElementById('layer-widget-button-wrapper').style.display='block';
         var assistLayerWidgetIframe = document.getElementById('layer-widget');
         if (assistLayerWidgetIframe) {
             assistLayerWidgetIframe.parentNode.removeChild(assistLayerWidgetIframe);
