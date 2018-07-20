@@ -536,7 +536,7 @@ class Messenger extends Component<Props, State> {
   }
 
   closeWidget(){
-    window.parent.assistLayerWidget.closeWidget();
+    window.parent.postMessage("closeWidget","*");
   }
 
   render() {

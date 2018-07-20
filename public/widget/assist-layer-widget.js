@@ -59,3 +59,9 @@ function AssistLayerWidget() {
 
 };
 
+
+window.addEventListener('message', function (event) {
+    if (event.data === 'closeWidget') {
+        assistLayerWidget.closeWidget();
+    }
+}); 
