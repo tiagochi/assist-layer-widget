@@ -24,6 +24,16 @@
     cursor: pointer;
     background: url(https://pbs.twimg.com/profile_images/689953967711875074/VFrfCWtM.png) center center;
     background-size: cover;
+    height: 40pt;
+    width: 40pt;
+    border: 0px;
+    margin-top: 10pt;
+    margin-left: 10pt;
+    border-radius: 50%;
+  }
+
+  .assist-layer-widget{
+    cursor: pointer;
     position: fixed;
     right: 20px;
     bottom: 20px;

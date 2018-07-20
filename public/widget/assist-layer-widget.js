@@ -13,15 +13,18 @@ function AssistLayerWidget() {
     }
     this.init = function (data) { //{app_id,identity_provider_url,botUserId}
         var oReq = new XMLHttpRequest();
+        var identity_provider_url = data.identity_provider_url?data.identity_provider_url:'https://platform-dev.assi.st/platform-core/api/public/v1/layer';
+        
         oReq.onload = function (e) {
             var xhr = e.target;
             var assistLayerWidgetDiv = document.getElementById('assist-layer-widget');
             assistLayerWidgetDiv.innerHTML = `
-            <div id="layer-widget-button" class="layer-widget-button" onclick="assistLayerWidget.openWidget('`+ xhr.response.appId + `','` + data.identity_provider_url + `','` + data.chatBotCode + `','` + data.environmentType + `','` + xhr.response.chatBotUserId + `');">
+            <div id="layer-widget-button" class="layer-widget-button" onclick="assistLayerWidget.openWidget('`+ xhr.response.appId + `','` + identity_provider_url + `','` + data.chatBotCode + `','` + data.environmentType + `','` + xhr.response.chatBotUserId + `');">
             </div>
             `
         };
-        oReq.open('GET', data.identity_provider_url+'/config?environmentType='+data.environmentType+'&chatBotCode='+data.chatBotCode, true);
+        
+        oReq.open('GET', identity_provider_url+'/config?environmentType='+data.environmentType+'&chatBotCode='+data.chatBotCode, true);
         oReq.responseType = 'json';
         oReq.send();
     }
