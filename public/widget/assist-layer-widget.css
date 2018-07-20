@@ -32,7 +32,7 @@
     border-radius: 50%;
   }
 
-  .assist-layer-widget{
+  .layer-widget-button-wrapper{
     cursor: pointer;
     position: fixed;
     right: 20px;
