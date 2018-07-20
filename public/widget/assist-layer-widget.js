@@ -19,7 +19,7 @@ function AssistLayerWidget() {
             var xhr = e.target;
             var assistLayerWidgetDiv = document.getElementById('assist-layer-widget');
             assistLayerWidgetDiv.innerHTML = `
-            <div class="layer-widget-button-wrapper">
+            <div id="layer-widget-button-wrapper" class="layer-widget-button-wrapper">
                 <div id="layer-widget-button" class="layer-widget-button" onclick="assistLayerWidget.openWidget('`+ xhr.response.appId + `','` + identity_provider_url + `','` + data.chatBotCode + `','` + data.environmentType + `','` + xhr.response.chatBotUserId + `');">
                 </div>
             </div>
