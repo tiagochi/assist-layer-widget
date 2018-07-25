@@ -1,3 +1,80 @@
 layer-compose-bar layer-menu-button span {
   font-size: 28px;
 }
+
+layer-message-item-sent .layer-root-viewer.layer-card-width-any-width > layer-standard-message-view-container > .layer-card-top {
+  background-color: #00B188;
+}
+
+
+layer-compose-bar .layer-button-panel button:hover {
+  color: #00B188;
+}
+layer-compose-bar .layer-button-panel layer-send-button,
+layer-compose-bar .layer-button-panel button {
+  font-size: 0.9rem;
+  padding: 8px 8px;
+  font-weight: bold;
+  color: #00B188;
+  cursor: pointer;
+  border-width: 0px;
+  background-color: transparent;
+}
+layer-compose-bar .layer-button-panel layer-send-button.layer-send-button-has-value,
+layer-compose-bar .layer-button-panel button.layer-send-button-has-value {
+  color: #00B188;
+}
+
+
+layer-message-viewer.layer-feedback-message-view.layer-feedback-enabled .layer-card-top {
+  color: #00B188;
+  background-color: #ffffff;
+}
+layer-message-viewer.layer-feedback-message-view.layer-feedback-enabled .layer-card-top span:hover {
+  color: #00B188;
+}
+layer-feedback-message-expanded-view.layer-feedback-enabled .layer-feedback-message-view-ratings {
+  color: #00B188;
+  background-color: #ffffff;
+}
+layer-feedback-message-expanded-view.layer-feedback-enabled .layer-feedback-message-view-ratings span:hover {
+  color: #00B188;
+}
+layer-feedback-message-expanded-view layer-action-button button {
+  border-radius: 4px;
+  background-color: #00B188;
+  color: #ffffff;
+}
+layer-feedback-message-expanded-view layer-action-button button:hover:not(:disabled) {
+  background-color: #00B188;
+  color: #ffffff;
+}
+layer-url-button button {
+  background-color: #ffffff;
+  color: #00B188;
+  font-size: 1rem;
+  border-radius: 0px;
+  border-width: 0px;
+  min-height: 44px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+layer-action-button button:focus,
+layer-url-button button:focus,
+layer-action-button button:active,
+layer-url-button button:active {
+  background-color: #e9ebef !important;
+  color: #00B188;
+}
+layer-action-button button:hover,
+layer-url-button button:hover {
+  background-color: #f3f3f3;
+  color: #00B188;
+}
+
+layer-action-button.layer-action-button-selected button,
+layer-url-button.layer-action-button-selected button {
+  background-color: #00B188;
+  color: #ffffff;
+}
