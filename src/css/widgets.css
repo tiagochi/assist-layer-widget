@@ -57,3 +57,20 @@ layer-action-button.layer-action-button-selected button,
 layer-url-button.layer-action-button-selected button {
   background-color: #00B188 !important;
 }
+layer-compose-bar.layer-is-empty layer-send-button {
+  color: #a4a8b2 !important;
+}
+
+layer-message-list::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  height: 7px;
+}
+
+
+layer-message-list::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
